@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/video_list.css' %}">
+{% endblock %}
+
+{% block start %}
+<section class="video-list">
+  <h1 class="video-list__title">Video List</h1>
+  {% for video in videos %}
+  <article class="video-item">
+    <h2 class="video-item__title">{{ video.title }}</h2>
+    <div class="video-item__player-wrapper">
+      <video class="video-item__player" width="320" height="240" controls>
+        <source src="{{ video.video_file.url }}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </article>
+  {% endfor %}
+</section>
+{% endblock %}
+
+
